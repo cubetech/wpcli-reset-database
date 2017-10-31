@@ -5,13 +5,16 @@ if (! class_exists('WP_CLI')) {
 }
 
 /**
- * Resets the Database in a specified interval
+ * Create a base databasedump and reset to this dump afterwards
  *
  * @when before_wp_load
  */
 class ResetDB
 {
-
+	/**
+	 * Create a DB-Dump in wp-content/ct-dump/base-db-dump.sql
+	 *
+	 */
 	public function createDump()
 	{
 		$config = $this->getconfig();
@@ -22,6 +25,10 @@ class ResetDB
 		WP_CLI::success('Created Database-Dump in ' . $config->path . $config->file);
 	}
 
+	/**
+	 * Resets the installation
+	 *
+	 */
 	public function resetInstallation()
 	{
 		$config = $this->getConfig();
