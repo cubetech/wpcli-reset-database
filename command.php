@@ -16,7 +16,7 @@ class ResetDB
 	{
 		$config = $this->getconfig();
 		if (!file_exists($config->path)) {
-			exec('mkdir ' . $configPath);
+			exec('mkdir ' . $config->path);
 		}
 		WP_CLI::runcommand('db export ' . $config->path . $config->file);
 		WP_CLI::success('Created Database-Dump in ' . $config->path . $config->file);
